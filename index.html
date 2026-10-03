@@ -1,0 +1,388 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#f5f7fa" />
+    <meta name="description" content="David Christian Medriano's social links." />
+    <title>David Christian Medriano</title>
+    <style>
+      :root {
+        --paper: #f4f6f8;
+        --white: #fff;
+        --blue: #1768d4;
+        --blue-dark: #0c3978;
+        --sky: #b9d9ff;
+        --ink: #17202c;
+        --muted: #6e7b8b;
+        --line: rgba(23, 32, 44, 0.12);
+        --portrait: url("./profile.jpg");
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        min-height: 100%;
+        background: var(--paper);
+      }
+
+      body {
+        min-height: 100vh;
+        margin: 0;
+        color: var(--ink);
+        font-family:
+          Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+          "Segoe UI", sans-serif;
+        background:
+          radial-gradient(circle at 15% 13%, rgba(255, 255, 255, 0.95), transparent 24rem),
+          radial-gradient(circle at 90% 90%, rgba(23, 104, 212, 0.1), transparent 28rem),
+          var(--paper);
+      }
+
+      .page {
+        display: grid;
+        width: min(100% - 28px, 1000px);
+        min-height: 100vh;
+        margin: 0 auto;
+        place-items: center;
+        padding: 28px 0;
+      }
+
+      .card {
+        display: grid;
+        width: 100%;
+        min-height: 610px;
+        grid-template-columns: 1.05fr 0.95fr;
+        overflow: hidden;
+        border: 1px solid rgba(255, 255, 255, 0.85);
+        border-radius: 30px;
+        background: rgba(255, 255, 255, 0.76);
+        box-shadow:
+          0 34px 90px rgba(15, 50, 92, 0.14),
+          0 4px 15px rgba(15, 50, 92, 0.05);
+      }
+
+      .portrait {
+        position: relative;
+        min-height: 610px;
+        overflow: hidden;
+        background:
+          linear-gradient(155deg, rgba(23, 104, 212, 0.02), rgba(8, 31, 62, 0.28)),
+          var(--portrait) center 24% / cover;
+      }
+
+      .portrait::before {
+        position: absolute;
+        inset: 0;
+        background:
+          linear-gradient(150deg, transparent 36%, rgba(12, 57, 120, 0.16)),
+          linear-gradient(180deg, transparent 66%, rgba(9, 35, 68, 0.32));
+        content: "";
+      }
+
+      .portrait::after {
+        position: absolute;
+        top: 18px;
+        right: 18px;
+        bottom: 18px;
+        left: 18px;
+        border: 1px solid rgba(255, 255, 255, 0.65);
+        border-radius: 21px;
+        content: "";
+      }
+
+      .photo-dot {
+        position: absolute;
+        right: 36px;
+        bottom: 37px;
+        z-index: 1;
+        width: 12px;
+        height: 12px;
+        border: 3px solid rgba(255, 255, 255, 0.88);
+        border-radius: 50%;
+        background: var(--blue);
+        box-shadow: 0 0 22px rgba(23, 104, 212, 0.9);
+      }
+
+      .content {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding: clamp(30px, 6vw, 68px);
+      }
+
+      .content::before {
+        position: absolute;
+        top: 32px;
+        right: 32px;
+        width: 62px;
+        height: 62px;
+        border: 1px solid rgba(23, 104, 212, 0.17);
+        border-radius: 50%;
+        box-shadow:
+          0 0 0 10px rgba(23, 104, 212, 0.04),
+          0 0 0 20px rgba(23, 104, 212, 0.025);
+        content: "";
+      }
+
+      .eyebrow {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin: 0 0 22px;
+        color: var(--blue);
+        font-size: 0.69rem;
+        font-weight: 900;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+      }
+
+      .eyebrow::before {
+        width: 25px;
+        height: 2px;
+        border-radius: 5px;
+        background: var(--blue);
+        content: "";
+      }
+
+      h1 {
+        position: relative;
+        z-index: 1;
+        margin: 0;
+        font-size: clamp(2.35rem, 5.2vw, 4.3rem);
+        font-weight: 850;
+        letter-spacing: -0.075em;
+        line-height: 0.96;
+      }
+
+      h1 span {
+        display: block;
+        color: var(--blue);
+      }
+
+      .divider {
+        width: 100%;
+        height: 1px;
+        margin: 32px 0 19px;
+        background: linear-gradient(90deg, var(--line), transparent);
+      }
+
+      .links {
+        display: grid;
+        gap: 11px;
+      }
+
+      .link {
+        display: flex;
+        align-items: center;
+        gap: 13px;
+        min-height: 69px;
+        padding: 10px 15px 10px 10px;
+        color: var(--ink);
+        text-decoration: none;
+        border: 1px solid var(--line);
+        border-radius: 16px;
+        background: rgba(255, 255, 255, 0.8);
+        box-shadow: 0 3px 10px rgba(18, 47, 83, 0.025);
+        transition:
+          transform 180ms ease,
+          border-color 180ms ease,
+          background 180ms ease,
+          box-shadow 180ms ease;
+      }
+
+      .link:hover,
+      .link:focus-visible {
+        border-color: rgba(23, 104, 212, 0.34);
+        background: #fff;
+        box-shadow: 0 12px 27px rgba(23, 80, 146, 0.1);
+        outline: none;
+        transform: translateY(-3px);
+      }
+
+      .icon {
+        display: grid;
+        width: 45px;
+        height: 45px;
+        flex: 0 0 45px;
+        place-items: center;
+        border-radius: 13px;
+        color: white;
+        background: var(--blue);
+      }
+
+      .link:nth-child(2) .icon {
+        color: var(--blue-dark);
+        background: var(--sky);
+      }
+
+      .link:nth-child(3) .icon {
+        background: var(--blue-dark);
+      }
+
+      .icon svg {
+        width: 21px;
+        height: 21px;
+        fill: currentColor;
+      }
+
+      .copy {
+        display: grid;
+        gap: 3px;
+        min-width: 0;
+      }
+
+      .copy strong {
+        font-size: 0.96rem;
+        font-weight: 850;
+      }
+
+      .copy span {
+        overflow: hidden;
+        color: var(--muted);
+        font-size: 0.76rem;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+
+      .arrow {
+        margin-left: auto;
+        color: var(--blue);
+        font-size: 1.25rem;
+      }
+
+      .footer {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        margin-top: 25px;
+        color: var(--muted);
+        font-size: 0.66rem;
+        font-weight: 850;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+      }
+
+      .footer::before {
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: var(--blue);
+        box-shadow: 0 0 9px rgba(23, 104, 212, 0.5);
+        content: "";
+      }
+
+      @media (max-width: 700px) {
+        .page {
+          width: min(100% - 16px, 540px);
+          padding: 10px 0;
+        }
+
+        .card {
+          grid-template-columns: 1fr;
+          border-radius: 22px;
+        }
+
+        .portrait {
+          min-height: 390px;
+          background-position: center 22%;
+        }
+
+        .content {
+          padding: 34px 23px 30px;
+        }
+
+        h1 {
+          font-size: clamp(2.8rem, 12vw, 4.2rem);
+        }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        *,
+        *::before,
+        *::after {
+          animation: none !important;
+          transition: none !important;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="page">
+      <section class="card" aria-labelledby="page-title">
+        <div class="portrait" aria-label="David Christian Medriano's profile photo">
+          <span class="photo-dot" aria-hidden="true"></span>
+        </div>
+
+        <div class="content">
+          <p class="eyebrow">Social links</p>
+          <h1 id="page-title">David Christian <span>Medriano</span></h1>
+          <div class="divider"></div>
+
+          <nav class="links" aria-label="Social links">
+            <a
+              class="link"
+              href="https://www.facebook.com/tian.medriano"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <span class="icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24">
+                  <path d="M13.5 21v-8h2.7l.4-3h-3.1V8.1c0-.9.3-1.5 1.5-1.5h1.7V4a22 22 0 0 0-2.5-.1c-2.5 0-4.2 1.5-4.2 4.3V10H7.5v3H10v8h3.5Z"></path>
+                </svg>
+              </span>
+              <span class="copy">
+                <strong>Facebook</strong>
+                <span>tian.medriano</span>
+              </span>
+              <span class="arrow" aria-hidden="true">↗</span>
+            </a>
+
+            <a
+              class="link"
+              href="https://www.instagram.com/ian_meds"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <span class="icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <rect x="3" y="3" width="18" height="18" rx="5"></rect>
+                  <circle cx="12" cy="12" r="4"></circle>
+                  <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"></circle>
+                </svg>
+              </span>
+              <span class="copy">
+                <strong>Instagram</strong>
+                <span>@ian_meds</span>
+              </span>
+              <span class="arrow" aria-hidden="true">↗</span>
+            </a>
+
+            <a
+              class="link"
+              href="https://www.tiktok.com/@ian_meds"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <span class="icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24">
+                  <path d="M15.2 3c.3 1.8 1.3 3 3.1 3.2v3a7 7 0 0 1-3.1-.8v6.2a5.4 5.4 0 1 1-4.7-5.3v3.1a2.4 2.4 0 1 0 1.6 2.2V3h3.1Z"></path>
+                </svg>
+              </span>
+              <span class="copy">
+                <strong>TikTok</strong>
+                <span>@ian_meds</span>
+              </span>
+              <span class="arrow" aria-hidden="true">↗</span>
+            </a>
+          </nav>
+
+          <div class="footer">03 links</div>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>
